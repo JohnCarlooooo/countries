@@ -1,0 +1,65 @@
+export interface flags {
+  svg: string;
+  png: string;
+}
+
+export interface currency {
+  code: string;
+  name: string;
+}
+
+export interface language {
+  iso639_1: string;
+  iso639_2: string;
+  name: string;
+  nativeName: string;
+}
+
+export interface regionalBloc {
+  acronym: string;
+  name: string;
+}
+
+export interface translations {
+  br: string;
+  pt: string;
+  nl: string;
+  hr: string;
+  fa: string;
+  de: string;
+  es: string;
+  fr: string;
+  ja: string;
+  it: string;
+  hu: string;
+}
+
+export interface country {
+  name: string;
+  topLevelDomain: string[];
+  alpha2Code: string;
+  alpha3Code: string;
+  callingCodes: string[];
+  capital: string;
+  altSpellings: string[];
+  subregion: string;
+  region: string;
+  population: number;
+  latlng: number[];
+  demonym: string;
+  area: number;
+  timezones: string[];
+  borders: string[];
+  nativeName: string;
+  numericCode: string;
+  flags: flags;
+  currencies: currency[];
+  languages: language[];
+  translations: translations;
+  flag: string;
+  regionalBlocs: regionalBloc[];
+  cioc: string;
+  independent: boolean;
+}
+
+export type countries = country[];
