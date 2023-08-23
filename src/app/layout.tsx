@@ -2,7 +2,7 @@ import Header from "@/components/ui/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-import ThemeProvider from "@/components/wrapper/ThemeWrapper";
+import Providers from "@/components/Providers";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -22,14 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ThemeProvider>
-        <body
-          className={`${nunitoSans.className} bg-lightGray dark:bg-darkBlue-200`}
-        >
+      <body className={`${nunitoSans.className}`}>
+        <Providers>
           <Header />
           {children}
-        </body>
-      </ThemeProvider>
+        </Providers>
+      </body>
     </html>
   );
 }

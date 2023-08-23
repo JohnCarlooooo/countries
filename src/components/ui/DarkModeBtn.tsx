@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
-import { useThemeContext } from "../wrapper/ThemeWrapper";
+import { useGlobalContext } from "../Providers/GlobalStateWrapper";
 
 const DarkModeBtn = () => {
-  const theme = useThemeContext();
+  const { darkMode, setDarkMode } = useGlobalContext();
   return (
     <button
-      onClick={theme.toggleDarkMode}
+      onClick={() => {
+        console.log(!darkMode);
+        setDarkMode(!darkMode);
+      }}
       className="flex flex-row items-center justify-center gap-2 p-2 rounded text-darkBlue-300"
     >
       <svg

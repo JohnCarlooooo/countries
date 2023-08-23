@@ -17,7 +17,7 @@ const fetchCountries = async () => {
 export default async function Home() {
   const countries: countries = await fetchCountries();
   return (
-    <main className="p-4 flex flex-col gap-8 h-screen overflow-y-hidden">
+    <main className=" p-4 flex flex-col gap-8 h-screen overflow-y-hidden transition-all duration-300 text-darkBlue-300 dark:text-white bg-lightGray dark:bg-darkBlue-200">
       <SearchBar />
       <MenuFilter />
       <Countries countries={countries} />

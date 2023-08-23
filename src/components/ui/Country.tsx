@@ -1,22 +1,31 @@
+"use client";
 import { country } from "@/app/api/countries/types";
 import Image from "next/image";
 import React from "react";
+import { useGlobalContext } from "../Providers/GlobalStateWrapper";
 
 interface prop {
   country: country;
 }
-
 const Country = ({ country }: prop) => {
+  const { search } = useGlobalContext();
+  if (
+    !country.name ||
+    !country.name.toLowerCase().includes(search.toLowerCase())
+  )
+    return null;
   return (
-    <div className="flex flex-col rounded-md bg-white w-full shadow-sm -z-20">
+    <div className="flex flex-col rounded-md bg-white w-full shadow-sm">
       <div className="w-full h-auto relative">
-        <Image
-          src={country.flag}
-          alt={country.name}
-          height={600}
-          width={600}
-          className="rounded-t-md"
-        />
+        {country.flag && (
+          <Image
+            src={country.flag}
+            alt={country.name}
+            height={600}
+            width={600}
+            className="rounded-t-md"
+          />
+        )}
       </div>
       <div className="flex flex-col p-6 text-darkBlue-300">
         <h3 className="font-bold">{country.name}</h3>

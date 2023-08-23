@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
+import { useGlobalContext } from "../Providers/GlobalStateWrapper";
 
 const SearchBar = () => {
+  const { search, setSearch } = useGlobalContext();
   return (
     <div className="flex flex-row justify-start items-center bg-white py-4 px-8 rounded-md shadow-sm gap-6">
       <svg
@@ -20,6 +23,10 @@ const SearchBar = () => {
         className="flex-1 text-sm text-darkGray font-semibold outline-none"
         type="text"
         placeholder="Search for a country..."
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
       />
     </div>
   );
