@@ -8,27 +8,34 @@ interface prop {
   country: country;
 }
 const Country = ({ country }: prop) => {
-  const { search } = useGlobalContext();
+  const { search, setSelectedCountry, filter } = useGlobalContext();
   if (
     !country.name ||
-    !country.name.toLowerCase().includes(search.toLowerCase())
+    !country.name.toLowerCase().includes(search.toLowerCase()) ||
+    (filter && !country.region.toLowerCase().includes(filter.toLowerCase()))
   )
     return null;
   return (
-    <div className="flex flex-col rounded-md bg-white w-full shadow-sm">
-      <div className="w-full h-auto relative">
+    <div
+      className="flex flex-col rounded-md bg-white dark:bg-darkBlue-100 w-full shadow-sm cursor-pointer desktop:w-[300px] desktop:h-[350px] desktop:justify-start"
+      onClick={() => {
+        setSelectedCountry(country);
+      }}
+    >
+      <div className="w-full h-[175px] relative">
         {country.flag && (
           <Image
             src={country.flag}
             alt={country.name}
-            height={600}
-            width={600}
-            className="rounded-t-md"
+            fill
+            className="rounded-t-md object-cover"
           />
         )}
       </div>
-      <div className="flex flex-col p-6 text-darkBlue-300">
-        <h3 className="font-bold">{country.name}</h3>
+      <div className="flex flex-col p-6 text-darkBlue-300 dark:text-white">
+        <h3 className="font-bold desktop:text-xl desktop:pb-4">
+          {country.name}
+        </h3>
         <p>
           <span className="font-semibold">Population: </span>
           {country.population && (

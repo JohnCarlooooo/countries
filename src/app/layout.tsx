@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${nunitoSans.className}`}>
+      <body className={`${nunitoSans.className} h-screen overflow-y-hidden`}>
         <Providers>
           <Header />
           {children}

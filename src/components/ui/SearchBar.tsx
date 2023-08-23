@@ -3,11 +3,12 @@ import React from "react";
 import { useGlobalContext } from "../Providers/GlobalStateWrapper";
 
 const SearchBar = () => {
-  const { search, setSearch } = useGlobalContext();
+  const { search, setSearch, selectedCountry } = useGlobalContext();
+  if (selectedCountry) return null;
   return (
-    <div className="flex flex-row justify-start items-center bg-white py-4 px-8 rounded-md shadow-sm gap-6">
+    <div className="desktop:w-[450px] flex flex-row justify-start items-center bg-white dark:bg-darkBlue-100 py-4 px-8 rounded-md shadow-sm gap-6">
       <svg
-        className="text-darkGray"
+        className="text-darkGray dark:fill-white dark:stroke-white"
         viewBox="0 0 24 24"
         height={20}
         width={20}
@@ -20,7 +21,7 @@ const SearchBar = () => {
         </g>
       </svg>
       <input
-        className="flex-1 text-sm text-darkGray font-semibold outline-none"
+        className="flex-1 text-sm text-darkGray font-semibold outline-none dark:bg-darkBlue-100 dark:text-white"
         type="text"
         placeholder="Search for a country..."
         value={search}

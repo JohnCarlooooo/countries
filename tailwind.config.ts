@@ -19,6 +19,9 @@ const config: Config = {
         "darkBlue-200": "hsl(207, 26%, 17%)",
         "darkBlue-300": "hsl(200, 15%, 8%)",
       },
+      screens: {
+        desktop: "1440px",
+      },
     },
   },
   plugins: [],
